@@ -46,7 +46,7 @@ const update = async (applicationId, formData) => {
     }
 }
 
-// delete service
+// delete application
 const remove = async (applicationId) => {
     try {
         const response = await axios.delete(`${BASE_URL}/${applicationId}`, authConfig())
