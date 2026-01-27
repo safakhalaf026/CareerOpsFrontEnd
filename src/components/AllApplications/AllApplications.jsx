@@ -4,27 +4,21 @@ import styles from "./AllApplications.module.css"
 
 function AllApplications({ applications }) {
   const navigate = useNavigate()
-
-  // Filters
-  const [status, setStatus] = useState("all") // all | active | completed
+  const [status, setStatus] = useState("all") 
   const [stage, setStage] = useState("all")
   const [source, setSource] = useState("all")
 
-  const activeStages = useMemo(
-    () => ["Applied", "HR Screen", "HR Interview", "Technical Interview", "Job Offer"],
-    []
-  )
+  const activeStages = useMemo(() => ["Applied", "HR Screen", "HR Interview", "Technical Interview", "Job Offer"], [])
   const completedStages = useMemo(() => ["Accepted", "Rejected"], [])
 
-  // Options (derived from your data so it stays in sync)
   const stageOptions = useMemo(() => {
-    const s = new Set(applications.map(a => a.stage).filter(Boolean))
-    return ["all", ...Array.from(s)]
+    const stage = new Set(applications.map(application => application.stage).filter(Boolean))
+    return ["all", ...Array.from(stage)]
   }, [applications])
 
   const sourceOptions = useMemo(() => {
-    const s = new Set(applications.map(a => a.jobSource).filter(Boolean))
-    return ["all", ...Array.from(s)]
+    const source = new Set(applications.map(application => application.jobSource).filter(Boolean))
+    return ["all", ...Array.from(source)]
   }, [applications])
 
   const filtered = useMemo(() => {
@@ -43,9 +37,9 @@ function AllApplications({ applications }) {
     })
   }, [applications, status, stage, source, activeStages, completedStages])
 
-  const formatDate = (d) => {
-    if (!d) return "—"
-    const date = new Date(d)
+  const formatDate = (getDate) => {
+    if (!getDate) return "—"
+    const date = new Date(getDate)
     if (Number.isNaN(date.getTime())) return "—"
     return date.toLocaleDateString()
   }
@@ -65,18 +59,16 @@ function AllApplications({ applications }) {
         </div>
       </div>
 
-      {/* Wide filter bar */}
       <section className={styles.filterBar}>
         <div className={styles.filterGroup}>
           <label className={styles.label}>Status</label>
           <select
             className={styles.select}
             value={status}
-            onChange={(e) => setStatus(e.target.value)}
-          >
-            <option value="all">All</option>
-            <option value="active">Active</option>
-            <option value="completed">Completed</option>
+            onChange={(event) => setStatus(event.target.value)}>
+              <option value="all">All</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
           </select>
         </div>
 
@@ -85,11 +77,10 @@ function AllApplications({ applications }) {
           <select
             className={styles.select}
             value={stage}
-            onChange={(e) => setStage(e.target.value)}
-          >
-            {stageOptions.map((s) => (
-              <option key={s} value={s}>
-                {s === "all" ? "All stages" : s}
+            onChange={(event) => setStage(event.target.value)}>
+            {stageOptions.map((stage) => (
+              <option key={stage} value={stage}>
+                {stage === "all" ? "All stages" : stage}
               </option>
             ))}
           </select>
@@ -100,8 +91,7 @@ function AllApplications({ applications }) {
           <select
             className={styles.select}
             value={source}
-            onChange={(e) => setSource(e.target.value)}
-          >
+            onChange={(event) => setSource(event.target.value)}>
             {sourceOptions.map((src) => (
               <option key={src} value={src}>
                 {src === "all" ? "All sources" : src}
@@ -110,17 +100,9 @@ function AllApplications({ applications }) {
           </select>
         </div>
 
-        <button
-          type="button"
-          className={styles.button}
-          onClick={resetFilters}
-          disabled={status === "all" && stage === "all" && source === "all"}
-        >
-          Reset
-        </button>
+        <button type="button" className={styles.button} onClick={resetFilters} disabled={status === "all" && stage === "all" && source === "all"}>Reset</button>
       </section>
 
-      {/* Cards */}
       {!filtered.length ? (
         <div className={styles.empty}>No applications found.</div>
       ) : (
@@ -132,10 +114,10 @@ function AllApplications({ applications }) {
               role="button"
               tabIndex={0}
               onClick={() => navigate(`/application/${app._id}`)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") navigate(`/application/${app._id}`)
-              }}
-            >
+              onKeyDown={(event) => {
+                if (event.key === "Enter" ||event.key === " ") navigate(`/application/${app._id}`)
+              }}>
+
               <div className={styles.cardTop}>
                 <div className={styles.company}>{app.companyName}</div>
                 <div className={styles.badge}>{app.stage}</div>
@@ -153,7 +135,6 @@ function AllApplications({ applications }) {
                 <span className={styles.metaValue}>{formatDate(app.appliedDate)}</span>
               </div>
 
-              {/* Optional: only show if it exists */}
               {app.nextActionDate ? (
                 <div className={styles.nextAction}>
                   <span className={styles.nextActionTitle}>Next action</span>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import * as applicationService from '../../services/applicationService'
 import { Link, useParams,useNavigate } from "react-router"
+import styles from "./ApplicationDetails.module.css"
 
 function ApplicationDetails({findApplicationsToUpdate, deleteApplication}) {
       const navigate = useNavigate()
@@ -24,11 +25,10 @@ function ApplicationDetails({findApplicationsToUpdate, deleteApplication}) {
     if(!applicationId) return <h1>Loading ...</h1>
     if(!application) return <h1>Loading ...</h1>
   return (
-            <div>
-        <Link onClick={()=>  findPetsToUpdate(petId) } to={`/pets/${petId}/update`}>Edit</Link> <br />
-        <Link  to={`/pets/${petId}/edit`}>Edit V2</Link>
-        <button onClick={handleDelete}>Delete</button>
-      </div>
+    <div>
+      <Link onClick={() => findApplicationsToUpdate(applicationId)} to={`/application/${applicationId}/update`}>Edit Application</Link> <br />
+      <button onClick={handleDelete}>Delete Application</button>
+    </div>
   )
 }
 export default ApplicationDetails
