@@ -1,186 +1,238 @@
+:root {
+  --bg: #f5f8f6;
+  --card: #ffffff;
+  --text: #1f2a24;
+  --muted: #66766d;
+  --line: #dbe6df;
+  --accent: #4f7a63;
+  --accentSoft: #e6f1ea;
+}
+
 .main {
-  max-width: 1100px;
-  margin: 20px auto;
-  padding: 0 16px;
+  min-height: calc(100vh - 80px);
+  background: var(--bg);
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .headerRow {
+  width: 100%;
+  max-width: 980px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-.main h1 {
-  font-size: 20px;
-  font-weight: 500;
-  color: #222;
+.headerRow h1 {
   margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.2px;
 }
 
 .countPill {
-  font-size: 13px;
-  color: #1f2f4d;
-  border: 1px solid #9fb3e0;
-  background-color: #c7d6f2;
-  padding: 5px 10px;
+  background: var(--card);
+  border: 1px solid var(--line);
   border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--muted);
+  font-size: 13px;
+  box-shadow: 0 10px 22px rgba(20, 40, 30, 0.06);
 }
 
-.filterBar {
-  max-width: 900px;
-  margin: 0 auto 20px auto;
-  padding: 12px;
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
+.countPill strong {
+  color: var(--text);
+}
 
-  border: 1px solid #9fb3e0;
-  background-color: #c7d6f2;
-  border-radius: 8px;
+
+.filterBar {
+  width: 100%;
+  max-width: 980px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  align-items: end;
+  justify-content: center; 
+  gap: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 22px rgba(20, 40, 30, 0.06);
+  margin-bottom: 16px;
 }
 
 .filterGroup {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  flex: 1;
+  min-width: 280px;
 }
 
 .label {
   font-size: 12px;
-  color: #444;
+  font-weight: 700;
+  color: var(--muted);
 }
 
 .select {
-  padding: 7px 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
   background: #fff;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
 }
 
 .select:focus {
-  outline: none;
-  border-color: #888;
+  border-color: rgba(79, 122, 99, 0.55);
+  box-shadow: 0 0 0 3px rgba(79, 122, 99, 0.14);
 }
 
 .button {
-  padding: 7px 14px;
-  font-size: 14px;
-  border: 1px solid #9fb3e0;
-  background-color: #c7d6f2;
-  color: #1f2f4d;
+  height: 41px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
   cursor: pointer;
-  border-radius: 4px;
-  height: 34px;
+  transition: transform 0.06s ease, opacity 0.15s ease;
 }
 
 .button:hover {
-  background-color: #b8cbec;
+  opacity: 0.92;
+}
+
+.button:active {
+  transform: translateY(1px);
 }
 
 .button:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
+  transform: none;
 }
 
 .grid {
+  width: 100%;
+  max-width: 980px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .card {
-  background: #fff;
-  border: 1px solid #9fb3e0;
-  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
   padding: 14px;
-
+  box-shadow: 0 10px 22px rgba(20, 40, 30, 0.06);
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  transition: transform 120ms ease, box-shadow 120ms ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.08s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  outline: none;
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  border-color: rgba(79, 122, 99, 0.35);
+  box-shadow: 0 14px 30px rgba(20, 40, 30, 0.10);
+}
+
+.card:focus {
+  border-color: rgba(79, 122, 99, 0.55);
+  box-shadow: 0 0 0 3px rgba(79, 122, 99, 0.14), 0 14px 30px rgba(20, 40, 30, 0.10);
 }
 
 .cardTop {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
 .company {
   font-size: 15px;
-  font-weight: 600;
-  color: #1f2f4d;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
 }
 
 .badge {
-  font-size: 12px;
-  padding: 4px 8px;
+  flex-shrink: 0;
+  background: var(--accentSoft);
+  color: var(--accent);
+  border: 1px solid var(--line);
+  padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid #9fb3e0;
-  background-color: #c7d6f2;
-  color: #1f2f4d;
+  font-size: 12px;
+  font-weight: 700;
   white-space: nowrap;
 }
 
 .role {
-  font-size: 14px;
-  font-weight: 500;
-  color: #222;
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .metaRow {
-  font-size: 13px;
   display: flex;
-  gap: 6px;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 6px;
 }
 
 .metaLabel {
-  color: #444;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .metaValue {
-  color: #1f2f4d;
+  color: var(--text);
+  font-size: 13px;
   font-weight: 500;
+  word-break: break-word;
 }
 
 .nextAction {
-  margin-top: auto;
-  padding-top: 10px;
-  border-top: 1px solid #e6e6e6;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--accentSoft);
+  border: 1px solid var(--line);
 }
 
 .nextActionTitle {
+  display: block;
+  color: var(--accent);
   font-size: 12px;
-  color: #444;
+  font-weight: 800;
+  margin-bottom: 4px;
 }
 
 .nextActionValue {
+  color: var(--text);
   font-size: 13px;
-  font-weight: 500;
-  color: #1f2f4d;
+  font-weight: 600;
 }
 
 .empty {
-  margin-top: 24px;
-  padding: 16px;
+  width: 100%;
+  max-width: 980px;
+  background: var(--card);
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  color: var(--muted);
   text-align: center;
-  font-size: 14px;
-
-  border: 1px dashed #9fb3e0;
-  border-radius: 8px;
-  color: #1f2f4d;
-  background: #fff;
 }
-

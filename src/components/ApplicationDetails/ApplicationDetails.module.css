@@ -1,0 +1,190 @@
+:root {
+  --bg: #f5f8f6;
+  --card: #ffffff;
+  --text: #1f2a24;
+  --muted: #66766d;
+  --line: #dbe6df;
+  --accent: #4f7a63;     
+  --accentSoft: #e6f1ea; 
+  --danger: #c84d4d;
+  --dangerSoft: #fdecec;
+}
+
+.main {
+  min-height: calc(100vh - 80px);
+  background: var(--bg);
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  max-width: 760px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 10px 22px rgba(20, 40, 30, 0.06);
+  margin-bottom: 14px;
+}
+
+.company {
+  margin: 0;
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.role {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.badge {
+  flex-shrink: 0;
+  background: var(--accentSoft);
+  color: var(--accent);
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.card {
+  width: 100%;
+  max-width: 760px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 22px rgba(20, 40, 30, 0.06);
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.value {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 14px 0;
+}
+
+.sectionTitle {
+  margin: 2px 0 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.noteBox {
+  margin-top: 10px;
+  background: var(--accentSoft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.noteTitle {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.noteText {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.longText {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.actions {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.06s ease, opacity 0.15s ease;
+}
+
+.linkButton:hover {
+  opacity: 0.92;
+}
+
+.linkButton:active {
+  transform: translateY(1px);
+}
+
+.dangerButton {
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--dangerSoft);
+  color: var(--danger);
+  border: 1px solid rgba(200, 77, 77, 0.25);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.06s ease, opacity 0.15s ease;
+}
+
+.dangerButton:hover {
+  opacity: 0.9;
+}
+
+.dangerButton:active {
+  transform: translateY(1px);
+}

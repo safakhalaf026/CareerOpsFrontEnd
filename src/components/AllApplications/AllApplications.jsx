@@ -2,6 +2,7 @@ import { useMemo, useState } from "react"
 import { useNavigate } from "react-router"
 import styles from "./AllApplications.module.css"
 
+
 function AllApplications({ applications }) {
   const navigate = useNavigate()
   const [status, setStatus] = useState("all") 
