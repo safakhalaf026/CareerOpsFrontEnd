@@ -15,7 +15,8 @@ const NavBar = () => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.navList}>
-        <li className={styles.brand}><img src={CareerOpsLogo} alt="CareerOps Logo" /><span>CareerOps</span></li>
+        <li className={styles.brand}><img src={CareerOpsLogo} alt="CareerOps Logo" />
+        <h2>CareerOps</h2></li>
         <li className={styles.right}>
           <ul className={styles.linkGroup}>
             {user ? (
