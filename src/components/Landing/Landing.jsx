@@ -26,8 +26,8 @@ const Landing = () => {
         </p>
 
         <div className={styles.actions}>
-          <Link to="/auth/signup" className={styles.primaryButton}>Create Account</Link>
-          <Link to="/auth/signin" className={styles.secondaryButton}>Sign In</Link>
+          <Link to="/sign-up" className={styles.primaryButton}>Create Account</Link>
+          <Link to="/sign-in" className={styles.secondaryButton}>Sign In</Link>
         </div>
       </section>
     </main>

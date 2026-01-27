@@ -1,30 +1,41 @@
-import { Link } from 'react-router'
-import { useContext } from 'react';
-import { UserContext } from '../../contexts/UserContext';
+import { Link } from "react-router"
+import { useContext } from "react"
+import { UserContext } from "../../contexts/UserContext"
+import CareerOpsLogo from "../../assets/CareerOpsLogo.png"
+import styles from "./NavBar.module.css"
 
 const NavBar = () => {
-  const {user, setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
 
-  const handleSignOut = ()=>{
-    localStorage.removeItem('token')
+  const handleSignOut = () => {
+    localStorage.removeItem("token")
     setUser(null)
   }
+
   return (
-    <nav>
-      {user ? (
-        <ul>
-          <li><Link to='/'>Dashboard</Link></li>
-          <li><Link onClick={handleSignOut} to='/'>Sign Out</Link></li>
-        </ul>) :
-        <ul>
-          <li><Link to='/'>Home</Link></li> {/* this leads to landing */}
-          <li><Link to='/sign-up'>Sign Up</Link></li>
-          <li><Link to='/sign-in'>Sign In</Link></li>
-        </ul>
-      }
+    <nav className={styles.nav}>
+      <ul className={styles.navList}>
+        <li className={styles.brand}><img src={CareerOpsLogo} alt="CareerOps Logo" /><span>CareerOps</span></li>
+        <li className={styles.right}>
+          <ul className={styles.linkGroup}>
+            {user ? (
+              <>
+                <li><Link to="/">Dashboard</Link></li>
+                <li><Link to="/application/new" className={styles.primary}>New Application</Link></li>
+                <li><Link onClick={handleSignOut} to="/">Sign Out</Link></li>
+              </>
+            ) : (
+              <>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/sign-up">Sign Up</Link></li>
+                <li><Link to="/sign-in">Sign In</Link></li>
+              </>
+            )}
+          </ul>
+        </li>
+      </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default NavBar;
-
+export default NavBar
