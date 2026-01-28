@@ -2,25 +2,28 @@ import { useState,useContext } from 'react';
 import { useNavigate } from 'react-router';
 import * as authService from '../../services/authService'
 import { UserContext } from '../../contexts/UserContext';
+import styles from './SignUpForm.module.css'
 
 const SignUpForm = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     username: '',
+    displayName: '',
+    email: '',
     password: '',
     passwordConf: '',
   });
   const {setUser} = useContext(UserContext)
-  const { username, password, passwordConf } = formData;
+  const { username,displayName, email, password, passwordConf } = formData;
 
-  const handleChange = (evt) => {
+  const handleChange = (event) => {
     setMessage('');
-    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const user = await authService.signUp(formData)
     setUser(user); 
     navigate('/')
@@ -31,13 +34,14 @@ const SignUpForm = () => {
   };
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      <p>{message}</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='username'>Username:</label>
+    <main className={styles.main}>
+      <h1 className={styles.title}>Sign Up</h1>
+      <p className={styles.message}>{message}</p>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor='username'>Username:</label>
           <input
+            className={styles.input}
             type='text'
             id='name'
             value={username}
@@ -46,9 +50,34 @@ const SignUpForm = () => {
             required
           />
         </div>
-        <div>
-          <label htmlFor='password'>Password:</label>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor='displayName'>Display Name:</label>
           <input
+            className={styles.input}
+            type='text'
+            id='displayName'
+            value={displayName}
+            name='displayName'
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor='email'>Email:</label>
+          <input
+            className={styles.input}
+            type='text'
+            id='email'
+            value={email}
+            name='email'
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor='password'>Password:</label>
+          <input
+            className={styles.input}
             type='password'
             id='password'
             value={password}
@@ -57,9 +86,10 @@ const SignUpForm = () => {
             required
           />
         </div>
-        <div>
-          <label htmlFor='confirm'>Confirm Password:</label>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor='confirm'>Confirm Password:</label>
           <input
+            className={styles.input}
             type='password'
             id='confirm'
             value={passwordConf}
@@ -68,9 +98,9 @@ const SignUpForm = () => {
             required
           />
         </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
+        <div className={styles.actions}>
+          <button className={styles.button} disabled={isFormInvalid()}>Sign Up</button>
+          <button className={`${styles.button} ${styles.secondary}`} onClick={() => navigate('/')}>Cancel</button>
         </div>
       </form>
     </main>

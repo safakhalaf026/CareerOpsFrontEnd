@@ -23,6 +23,7 @@ const NavBar = () => {
               <>
                 <li><Link to="/">Dashboard</Link></li>
                 <li><Link to="/application/new" className={styles.primary}>New Application</Link></li>
+                <li><Link to="/application/all" className={styles.primary}>All Applications</Link></li>
                 <li><Link onClick={handleSignOut} to="/">Sign Out</Link></li>
               </>
             ) : (
