@@ -1,0 +1,151 @@
+.page {
+  padding: 7px 22px;
+}
+
+.stateText {
+  padding: 24px;
+  font-size: 14px;
+}
+
+.welcomeTitle {
+  margin: 0 0 6px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #0f172a;
+}
+
+.activeCountTitle {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 650;
+  color: #0f172a;
+}
+
+.pageTitle {
+  margin: 6px 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.highlight {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(14, 165, 233, 0.12);
+  color: #0f172a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 320px 280px; 
+  gap: 14px;
+  align-items: stretch;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 16px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.cardHeader {
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cardSub {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.chartWrap {
+  height: calc(100% - 52px);
+  width: 100%;
+}
+
+.pieWrap {
+  height: calc(100% - 44px);
+}
+
+.stageBar {
+  grid-column: 1 / 7;
+  grid-row: 1 / 2;
+}
+
+.sourcePie {
+  grid-column: 7 / 10; 
+  grid-row: 1 / 2;
+}
+
+.kpiRowCard {
+  grid-column: 10 / 13; 
+  grid-row: 1 / 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: center;
+}
+
+.stageSource {
+  grid-column: 1 / 8; 
+  grid-row: 2 / 3;
+}
+
+.rejection {
+  grid-column: 8 / 13; 
+  grid-row: 2 / 3;
+}
+
+/* KPI text styles */
+.kpiTop {
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.75);
+  margin-bottom: 8px;
+}
+
+.kpiBottom {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.kpiValue {
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -1px;
+}
+
+.kpiMini {
+  flex: 1;
+}
+
+.kpiDivider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(15, 23, 42, 0.12);
+}
+
+.kpiValueSm {
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.6px;
+}
