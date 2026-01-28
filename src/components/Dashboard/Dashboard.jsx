@@ -1,6 +1,33 @@
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import * as userAnalyticsService from '../../services/UserAnalyticsService'
+import { Bar, Pie, Line } from 'react-chartjs-2'
+
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    ArcElement,
+    PointElement,
+    LineElement,
+    Tooltip,
+    Legend,
+    Filler,
+} from 'chart.js'
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    ArcElement,
+    PointElement,
+    LineElement,
+    Tooltip,
+    Legend,
+    Filler
+)
+
 
 const Dashboard = () => {
     // Access the user object from UserContext
@@ -17,7 +44,7 @@ const Dashboard = () => {
     // This is where we perform side effects like API calls
     useEffect(() => {
         const fetchAnalytics = async () => {
-            if (!user) return 
+            if (!user) return
             try {
                 setLoading(true)
                 setError('')
@@ -47,8 +74,51 @@ const Dashboard = () => {
             <h2>You currently have {kpis?.totalActiveApplications ?? 0} active applications </h2>
             <h2>Avg response time: {kpis?.avgResponseDays ?? 0} days</h2>
             <h2>Upcoming tasks: {kpis?.upcomingNextActions ?? 0}</h2>
+{/* ====================================== Active applications (by stage) in vertical bar chart ======================================  */}
+            {charts?.activeByStage && (
+                <Bar data={charts.activeByStage}
+                    options={{
+                        responsive: true,
+                        scales: { y: { beginAtZero: true } },
+                    }}/>
+            )}
+{/* ====================================== Source of all applications in pie chart ======================================  */}
+            {charts?.bySourcePie && (
+                <Pie data={charts.bySourcePie}
+                    options={{
+                        responsive: true,
+                        plugins: { legend: { position: 'bottom' } },
+                    }}/>
+            )}
+{/* ====================================== Rejected applications and reasons in horizontal bar chart ======================================  */}
+            {charts?.rejectionReasonsHorizontal && (
+                <Bar data={charts.rejectionReasonsHorizontal}
+                    options={{
+                        responsive: true,
+                        indexAxis: 'y',
+                        scales: { x: { beginAtZero: true } },
+                    }}/>
+            )}
 
-            {/* Charts will use charts?.activeByStage, charts?.bySourcePie, etc */}
+            {charts?.stageVsSourceStackedArea && (
+                <Line data={{
+                        ...charts.stageVsSourceStackedArea,
+                        datasets: charts.stageVsSourceStackedArea.datasets.map(dataset => ({
+                            ...dataset,
+                            fill: true,
+                        })),
+                    }}
+                    options={{
+                        responsive: true,
+                        scales: {
+                            x: { stacked: true },
+                            y: { stacked: true, beginAtZero: true },
+                        },
+                        plugins: { legend: { position: 'bottom' } },
+                    }}
+                />
+            )}
+
         </div>
     )
 }
