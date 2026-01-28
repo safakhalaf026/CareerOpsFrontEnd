@@ -1,9 +1,8 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
-
 import { signIn } from '../../services/authService'; // this is excplicitly importing the signIn function from authService
-
 import { UserContext } from '../../contexts/UserContext';
+import styles from "./SignInForm.module.css"
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -31,13 +30,13 @@ const SignInForm = () => {
   };
 
   return (
-    <main>
-      <h1>Sign In</h1>
-      <p>{message}</p>
-      <form autoComplete='off' onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='email'>Username:</label>
+   <main className={styles.main}>
+      <h1 className={styles.title}>Sign In</h1>
+      <form className={styles.form} autoComplete='off' onSubmit={handleSubmit}>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor='email'>Username:</label>
           <input
+            className={styles.input}
             type='text'
             autoComplete='off'
             id='username'
@@ -47,9 +46,10 @@ const SignInForm = () => {
             required
           />
         </div>
-        <div>
-          <label htmlFor='password'>Password:</label>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor='password'>Password:</label>
           <input
+            className={styles.input}
             type='password'
             autoComplete='off'
             id='password'
@@ -59,9 +59,9 @@ const SignInForm = () => {
             required
           />
         </div>
-        <div>
-          <button>Sign In</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
+        <div className={styles.actions}>
+          <button className={styles.button}>Sign In</button>
+          <button className={`${styles.button} ${styles.secondary}`} onClick={() => navigate('/')}>Cancel</button>
         </div>
       </form>
     </main>
