@@ -2,9 +2,7 @@
 
 #root {
   font-family: 'Inter', sans-serif;
+  background-color:#f5f8f6;
 }
 
-html, body { 
-  margin: 0; 
-  background: #f5f8f6; 
-}
+html, body {margin: 0;}

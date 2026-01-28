@@ -108,3 +108,14 @@
   background: var(--accentSoft);
   opacity: 1;
 }
+
+@media (max-width: 560px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

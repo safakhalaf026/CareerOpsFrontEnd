@@ -188,3 +188,35 @@
 .dangerButton:active {
   transform: translateY(1px);
 }
+
+@media (max-width: 680px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .badge {
+    width: 100%;
+    text-align: center;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .value {
+    text-align: left;
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .linkButton,
+  .dangerButton {
+    width: 100%;
+  }
+}
