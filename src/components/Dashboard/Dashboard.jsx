@@ -266,8 +266,7 @@ const Dashboard = () => {
                 <div className={`${styles.card} ${styles.rejection}`}>
                     <div className={styles.cardHeader}>
                         <h3 className={styles.cardTitle}>Rejection reasons</h3>
-                        <p className={styles.cardMeta}>
-                            Total rejections: {kpis?.totalRejectedApplications ?? 0}</p>
+                        <p className={styles.cardSub}>Counts by reason</p>
                     </div>
 
                     {themedCharts?.rejectionReasonsHorizontal && (

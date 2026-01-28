@@ -1,3 +1,6 @@
+/* SignUpForm.module.css */
+/* same CareerOps light gray-green theme, clean + modern */
+
 :root {
   --bg: #f5f8f6;
   --card: #ffffff;
@@ -37,7 +40,7 @@
   color: var(--danger);
   font-size: 13px;
   font-weight: 700;
-  min-height: 18px; 
+  min-height: 18px; /* keeps layout stable even when empty */
 }
 
 .form {
@@ -115,6 +118,7 @@
   transform: none;
 }
 
+/* cancel button = secondary */
 .secondary {
   background: transparent;
   color: var(--accent);
@@ -126,6 +130,7 @@
   opacity: 1;
 }
 
+/* mobile */
 @media (max-width: 560px) {
   .actions {
     flex-direction: column;

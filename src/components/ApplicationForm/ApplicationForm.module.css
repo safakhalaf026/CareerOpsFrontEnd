@@ -131,24 +131,3 @@ textarea.input {
   background: var(--accentSoft);
   opacity: 1;
 }
-
-@media (max-width: 820px) {
-  .form {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 560px) {
-  .form {
-    padding: 18px 16px;
-  }
-
-  .form > div:last-child {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .button {
-    width: 100%;
-  }
-}
