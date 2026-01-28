@@ -8,7 +8,6 @@ const authConfig = () => ({
 const analytics = async () => {
     try {
         const response = await axios.get(`${BASE_URL}/summary`, authConfig())
-        console.log(response.data)
         return response.data
     } catch (error) {
         console.log(error)
