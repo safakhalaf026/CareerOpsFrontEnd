@@ -1,6 +1,6 @@
 import {Routes,Route} from 'react-router'
 import { useContext, useEffect, useState } from 'react';
-import './app.css'
+import './App.css'
 import NavBar from './components/NavBar/NavBar'
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
